@@ -20,3 +20,5 @@
 
 # End of https://www.toptal.com/developers/gitignore/api/visualstudiocode
 .vscode/settings.json
+
+*/package-lock.json
