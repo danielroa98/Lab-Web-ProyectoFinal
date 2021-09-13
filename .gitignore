@@ -140,3 +140,5 @@ dist
 
 # End of https://www.toptal.com/developers/gitignore/api/node,visualstudiocode
 .vscode/settings.json
+smartbark/package-lock.json
+smartbark/yarn.lock
