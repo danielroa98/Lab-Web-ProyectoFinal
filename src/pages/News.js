@@ -18,7 +18,7 @@ export default function News(params) {
     const firebase = getFirebase();
     const [news, setNews] = useState([])
 
-    const newsURL = 'http://localhost:3001/getnews';
+    const newsURL = 'https://mexico-health-news.herokuapp.com/getnews';
 
     const getRecentNews = () => {
         axios.get(newsURL)
