@@ -2,15 +2,7 @@ import axios from 'axios';
 import React, { useEffect, useState } from "react";
 import {
     Container,
-    Divider,
-    Card,
-    CardContent,
-    Typography,
     Box,
-    FormControl,
-    Select,
-    MenuItem,
-    InputLabel,
 } from "@mui/material";
 import { Link } from 'react-router-dom';
 
@@ -24,32 +16,43 @@ import NewsCard from "../components/NewsCard";
 
 export default function News(params) {
     const firebase = getFirebase();
-    const [articles, setArticles] = useState([]);
+    const [news, setNews] = useState([])
+
+    const newsURL = 'http://localhost:3001/getnews';
+
+    const getRecentNews = () => {
+        axios.get(newsURL)
+            .then((res) => {
+                const allNews = res.data;
+                // console.log(allNews);
+                setNews(allNews);
+                console.log(news);
+            })
+            .catch(error => console.error(`ErrorL ${error}`));
+    }
 
     useEffect(() => {
-        const latestNews = async() => {
-            try {
-                const res = await axios.get('http://localhost:3001/getnews');
-                await setArticles(res.data);
-                console.log(articles);
-            } catch (error) {
-                console.error(error);
-            }
-        };
-        latestNews();
-    }, [])
+        getRecentNews();
+    }, []);
 
     return (
         <>
             <div>
                 <Navbar userData={params.userData} />
                 <Container>
-                    <Typography variant='h4' component='div' style={{
-                        textAlign: 'center',
-                    }}>News</Typography>
+                    <h1>News</h1>
                 </Container>
             </div>
-            <NewsCard />
+            <Container container
+                spacing={2}
+                direction="row"
+                justify="flex-start"
+                alignItems="center"
+            >
+                {news.map(a =>
+                    <NewsCard imageURL={a.urlToImage} title={a.title} author={a.author} url={a.url} />
+                )}
+            </Container>
         </>
     )
 }
