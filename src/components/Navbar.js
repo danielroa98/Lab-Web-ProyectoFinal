@@ -53,6 +53,10 @@ export default function Navbar(params) {
                                     <Button color='secondary' variant='contained'>Checkout</Button>
                                     </Link>
                                     &nbsp;
+                                    <Link to="/news">
+                                        <Button color='secondary' variant='contained'>News</Button>
+                                    </Link>
+                                    &nbsp;
                                 </Toolbar>
 
                                 <Button variant='contained' color='secondary' sx={{ margin: 2 }}>{params.userData.displayName}</Button>

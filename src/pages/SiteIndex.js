@@ -13,6 +13,7 @@ import SignUp from "./SignUp";
 import AddMedicine from "./AddMedicine";
 import Orders from "./Orders";
 import Transfers from "./Transfers";
+import News from './News';
 
 import { CarritoProvider } from "../contexts/Carrito";
 
@@ -136,6 +137,15 @@ export default function SiteIndex(props) {
                             userData={props.userData}
                         />
                     </Route>
+                    <Route path={'/news'}>
+                        <News
+                            firebase={props.firebase}
+                            signUpSubmit={signUpSubmit}
+                            history={props.history}
+                            userData={props.userData}
+                        />
+                    </Route>
+
                 </Switch>
             ) : (
                 <Switch>
