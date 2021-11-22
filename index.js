@@ -3,7 +3,6 @@ const express = require('express');
 const fetch = require('node-fetch');
 
 // Port definition
-const PORT = 3001;
 const url = 'https://newsapi.org/v2/top-headlines?country=mx&category=health&apiKey=fc55a7ea4bed4d238b54cc787e005125';
 
 const app = express();
@@ -36,6 +35,6 @@ app.get('/getnews', async function(req, res) {
     res.send(data);
 });
 
-app.listen(PORT, () => {
-    console.log(`Server listening on http://localhost:${PORT}`);
+app.listen(process.env.PORT || 3001 , () => {
+    console.log('Server listening on http://localhost:'+ process.env.PORT || 3001);
 })
